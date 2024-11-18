@@ -14,7 +14,8 @@ public class MultiplicationTableBuilder {
 
         if (isValidInput) {
             ArrayList<String> table = builder.createMultiplicationTable(start, end);
-            System.out.println(table);
+            String formattedTable = builder.formatMultiplicationTable(table);
+            System.out.println(formattedTable);
         }
 
 //        String multiplicationTable = builder.build(start, end);
@@ -54,6 +55,14 @@ public class MultiplicationTableBuilder {
             table.add(row);
         }
         return table;
+    }
+
+    public String formatMultiplicationTable(ArrayList<String> table) {
+        StringBuilder result = new StringBuilder();
+        for (String row : table) {
+            result.append(row).append("\n");
+        }
+        return result.toString();
     }
 
 
