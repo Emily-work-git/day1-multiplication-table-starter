@@ -9,21 +9,17 @@ public class MultiplicationTableBuilder {
         int start = 2;
         int end = 4;
 
-        boolean isValidInput = builder.validateInput(start, end);
-        System.out.println(isValidInput);
-
-        if (isValidInput) {
-            ArrayList<String> table = builder.createMultiplicationTable(start, end);
-            String formattedTable = builder.formatMultiplicationTable(table);
-            System.out.println(formattedTable);
-        }
-
-//        String multiplicationTable = builder.build(start, end);
-//        System.out.println(multiplicationTable);
+        String multiplicationTable = builder.build(start, end);
+        System.out.println(multiplicationTable);
     }
 
     public String build(int start, int end) {
-        return "";
+        boolean isValidInput = validateInput(start, end);
+
+        if (isValidInput) {
+            return createMultiplicationTable(start, end);
+        }
+        else return null;
     }
 
     public boolean checkValidRange(int start, int end) {
@@ -46,24 +42,26 @@ public class MultiplicationTableBuilder {
             int result = i * end;
             row.add(i+"*"+end+"="+result);
         }
-        return row.toString();
+
+        StringBuilder result = new StringBuilder();
+        for (String element : row) {
+            result.append(element).append(" ");
+        }
+        return result.toString().trim();
     }
-    public ArrayList<String> createMultiplicationTable(int start, int end) {
+    public String createMultiplicationTable(int start, int end) {
         ArrayList<String> table = new ArrayList<String>();
         for(int  i=0; i <= end-start; i ++){
             String row = createMultiplicationTableRow(start, start+i);
             table.add(row);
         }
-        return table;
-    }
-
-    public String formatMultiplicationTable(ArrayList<String> table) {
         StringBuilder result = new StringBuilder();
         for (String row : table) {
-            result.append(row).append("\n");
+            result.append(row).append(System.lineSeparator());
         }
         return result.toString();
     }
+
 
 
 }
