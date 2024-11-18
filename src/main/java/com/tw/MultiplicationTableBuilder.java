@@ -1,5 +1,7 @@
 package com.tw;
 
+import java.util.ArrayList;
+
 public class MultiplicationTableBuilder {
 
     public static void main(String[] args) {
@@ -9,6 +11,16 @@ public class MultiplicationTableBuilder {
 
         boolean isValidInput = builder.validateInput(start, end);
         System.out.println(isValidInput);
+
+        if (isValidInput) {
+            String testRow = builder.createMultiplicationTableRow(2, 2);
+            String testRow2 = builder.createMultiplicationTableRow(2, 3);
+            String testRow3 = builder.createMultiplicationTableRow(2, 4);
+            System.out.println(testRow);
+            System.out.println(testRow2);
+            System.out.println(testRow3);
+        }
+
 //        String multiplicationTable = builder.build(start, end);
 //        System.out.println(multiplicationTable);
     }
@@ -29,5 +41,14 @@ public class MultiplicationTableBuilder {
         boolean areValidNumbers = checkValidNumbers(start, end);
         System.out.println(areValidNumbers);
         return isValidRange && areValidNumbers;
+    }
+
+    public String createMultiplicationTableRow(int start, int end) {
+        ArrayList<String> row = new ArrayList<String>();
+        for(int  i=start; i <= end; i ++){
+            int result = i * end;
+            row.add(i+"*"+end+"="+result);
+        }
+        return row.toString();
     }
 }
