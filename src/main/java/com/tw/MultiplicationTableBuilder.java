@@ -13,12 +13,8 @@ public class MultiplicationTableBuilder {
         System.out.println(isValidInput);
 
         if (isValidInput) {
-            String testRow = builder.createMultiplicationTableRow(2, 2);
-            String testRow2 = builder.createMultiplicationTableRow(2, 3);
-            String testRow3 = builder.createMultiplicationTableRow(2, 4);
-            System.out.println(testRow);
-            System.out.println(testRow2);
-            System.out.println(testRow3);
+            ArrayList<String> table = builder.createMultiplicationTable(start, end);
+            System.out.println(table);
         }
 
 //        String multiplicationTable = builder.build(start, end);
@@ -51,4 +47,14 @@ public class MultiplicationTableBuilder {
         }
         return row.toString();
     }
+    public ArrayList<String> createMultiplicationTable(int start, int end) {
+        ArrayList<String> table = new ArrayList<String>();
+        for(int  i=0; i <= end-start; i ++){
+            String row = createMultiplicationTableRow(start, start+i);
+            table.add(row);
+        }
+        return table;
+    }
+
+
 }
