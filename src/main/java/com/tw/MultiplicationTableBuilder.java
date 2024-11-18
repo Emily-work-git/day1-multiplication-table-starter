@@ -6,12 +6,17 @@ public class MultiplicationTableBuilder {
         MultiplicationTableBuilder builder = new MultiplicationTableBuilder();
         int start = 2;
         int end = 4;
-        String multiplicationTable = builder.build(start, end);
-
-        System.out.println(multiplicationTable);
+        boolean isValidRange = builder.checkValidRange(start, end);
+        System.out.println(isValidRange);
+//        String multiplicationTable = builder.build(start, end);
+//        System.out.println(multiplicationTable);
     }
 
     public String build(int start, int end) {
         return "";
+    }
+
+    public boolean checkValidRange(int start, int end) {
+        return start <= end;
     }
 }
